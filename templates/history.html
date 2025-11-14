@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>历史记录 - 人生决策骰子模拟器</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-title">
+                    <h1>📚 历史记录</h1>
+                    <p class="subtitle">查看你的所有决策记录</p>
+                </div>
+                <a href="/" class="history-link-btn">🏠 返回首页</a>
+            </div>
+        </header>
+
+        <main>
+            <!-- 搜索框 -->
+            <div class="search-section">
+                <div class="search-box">
+                    <input type="text" id="searchKeyword" placeholder="🔍 输入关键词搜索（任务、选项、故事）..." maxlength="100">
+                    <button class="search-btn" onclick="searchHistory()">搜索</button>
+                    <button class="clear-btn" onclick="clearSearch()" id="clearBtn" style="display:none;">清除</button>
+                </div>
+                <div class="search-tips" id="searchTips"></div>
+            </div>
+
+            <!-- 历史记录列表 -->
+            <div class="history-page-container">
+                <div class="history-list-header">
+                    <h2>📋 决策记录</h2>
+                    <div class="record-count" id="recordCount">加载中...</div>
+                </div>
+                <div class="history-list" id="historyList">
+                    <div style="text-align: center; padding: 40px; color: #999;">加载中...</div>
+                </div>
+            </div>
+        </main>
+
+        <footer>
+            <p>💡 提示：点击 🗑️ 按钮可以删除不需要的记录</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/history.js') }}"></script>
+</body>
+</html>
+

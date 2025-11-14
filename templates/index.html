@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人生决策骰子模拟器</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <div class="header-title">
+                    <h1>🎲 人生决策骰子模拟器</h1>
+                    <p class="subtitle">让命运帮你做决定，探索人生的无限可能</p>
+                </div>
+                <a href="/history" class="history-link-btn">📚 查看历史</a>
+            </div>
+        </header>
+
+        <main>
+            <div class="decision-form">
+                <div class="form-group">
+                    <label for="task">📝 你的决策任务：</label>
+                    <input type="text" id="task" placeholder="例如：是否要换工作？" maxlength="200">
+                </div>
+
+                <div class="form-group">
+                    <label>🎯 选项（至少2个）：</label>
+                    <div id="options-container">
+                        <div class="option-input">
+                            <input type="text" class="option" placeholder="选项 1" maxlength="100">
+                            <button type="button" class="remove-option" onclick="removeOption(this)" style="display:none;">×</button>
+                        </div>
+                        <div class="option-input">
+                            <input type="text" class="option" placeholder="选项 2" maxlength="100">
+                            <button type="button" class="remove-option" onclick="removeOption(this)" style="display:none;">×</button>
+                        </div>
+                    </div>
+                    <button type="button" class="add-option-btn" onclick="addOption()">+ 添加选项</button>
+                </div>
+
+                <button type="button" class="decision-btn" id="decisionBtn" onclick="makeDecision()">
+                    🎁 开启幸运盲盒
+                </button>
+            </div>
+
+            <!-- 盲盒动画容器 -->
+            <div class="box-container" id="boxContainer" style="display:none;">
+                <div class="lucky-box" id="luckyBox">
+                    <div class="box-top">
+                        <div class="ribbon"></div>
+                        <div class="ribbon"></div>
+                        <div class="ribbon"></div>
+                    </div>
+                    <div class="box-body">
+                        <div class="sparkle sparkle-1">✨</div>
+                        <div class="sparkle sparkle-2">✨</div>
+                        <div class="sparkle sparkle-3">✨</div>
+                        <div class="sparkle sparkle-4">✨</div>
+                        <div class="sparkle sparkle-5">✨</div>
+                        <div class="box-content" id="boxContent">
+                            <div class="loading-text">正在为你开启...</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 结果显示区域 -->
+            <div class="result-container" id="resultContainer" style="display:none;">
+                <div class="result-card">
+                    <div class="result-header">
+                        <h2>🎉 决策结果</h2>
+                    </div>
+                    <div class="result-body">
+                        <div class="blessing" id="blessing"></div>
+                        <div class="selected-option" id="selectedOption"></div>
+                        <div class="story" id="story"></div>
+                    </div>
+                    <div class="result-footer">
+                        <button class="btn-secondary" onclick="resetForm()">再来一次</button>
+                        <a href="/history" class="btn-secondary" style="text-decoration: none; display: inline-block;">查看历史</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 历史记录 -->
+            <div class="history-container" id="historyContainer" style="display:none;">
+                <div class="history-header">
+                    <h2>📚 历史记录</h2>
+                    <button class="close-btn" onclick="closeHistory()">×</button>
+                </div>
+                <div class="history-list" id="historyList"></div>
+            </div>
+        </main>
+
+        <footer>
+            <p>💡 提示：这个工具仅供娱乐，真正的决策还是要靠你自己哦！</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
+
