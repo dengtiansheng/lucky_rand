@@ -7,11 +7,15 @@ provider:
   region: ap-guangzhou
   memorySize: 512
   timeout: 30
-  environment:
-    DB_HOST: ${env:DB_HOST}
-    DB_USER: ${env:DB_USER}
-    DB_PASSWORD: ${env:DB_PASSWORD}
-    DB_NAME: ${env:DB_NAME}
+  # 环境变量配置
+  # 注意：敏感信息请通过腾讯云控制台或部署时设置，不要直接写在配置文件中
+  # 部署前请设置以下环境变量：
+  # export DB_HOST=your_host
+  # export DB_PORT=3306
+  # export DB_USER=your_user
+  # export DB_PASSWORD=your_password
+  # export DB_NAME=lucky_rand
+  environment: {}
 
 functions:
   app:
@@ -27,4 +31,12 @@ functions:
 
 plugins:
   - serverless-tencent-scf
+  - serverless-python-requirements
+
+custom:
+  pythonRequirements:
+    dockerizePip: false
+    pipCmdExtraArgs:
+      - --cache-dir
+      - /tmp/.cache/pip
 

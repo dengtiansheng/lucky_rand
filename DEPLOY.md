@@ -89,22 +89,32 @@ serverless config credentials \
 
 ### 部署步骤
 
-1. **配置环境变量**
+1. **安装 Serverless Python Requirements 插件**
 
-在 `serverless.yml` 中配置数据库连接信息，或使用环境变量：
+```bash
+npm install serverless-python-requirements
+```
+
+2. **配置环境变量**
+
+部署前设置环境变量：
 
 ```bash
 export DB_HOST=your_db_host
+export DB_PORT=3306
 export DB_USER=your_db_user
 export DB_PASSWORD=your_db_password
 export DB_NAME=lucky_rand
+export FLASK_DEBUG=False
 ```
 
-2. **部署到腾讯云**
+3. **部署到腾讯云**
 
 ```bash
 serverless deploy
 ```
+
+**注意**：首次部署可能需要较长时间，因为需要安装 Python 依赖包。
 
 3. **访问应用**
 
